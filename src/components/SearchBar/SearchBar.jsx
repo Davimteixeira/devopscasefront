@@ -20,7 +20,7 @@ function SearchBar({ onSearch }) {
       <input
         className="search-input"
         type="text"
-        placeholder="Enter Pokémon Name"
+        placeholder="enter Pokémon Name"
         value={pokemonSearchName}
         onChange={(e) => setPokemonSearchName(e.target.value)}
         onKeyDown={handleKeyDown}
