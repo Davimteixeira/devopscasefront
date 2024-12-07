@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  devopscasefront:
+    build:
+      context: . # Definição do diretório de build
+    container_name: devopscasefront # Nome do container
+    ports:
+      - '80:80' # Mapeia a porta 80 do container para a porta 80 da máquina host
+    volumes:
+      - .:/app # Mapeia o diretório atual (onde está o docker-compose) para /app no container
+      - /app/node_modules # Garante que os node_modules sejam persistidos no container
+    environment:
+      - NGINX_PORT=80 # Define a variável de ambiente para a porta do Nginx
+    networks:
+      - webnet # Conecta o container a uma rede customizada chamada webnet
+
+networks:
+  webnet:
+    driver: bridge # Usa a rede padrão "bridge" para o container se comunicar com outros containers
