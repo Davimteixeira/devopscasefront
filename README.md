@@ -84,7 +84,7 @@ Este processo de CI/CD permite que a equipe de desenvolvimento tenha uma entrega
 1. Clone este repositório:
 
    ```bash
-   git clone https://github.com/seu-usuario/devopscasefront.git
+   git clone https://github.com/Davimteixeira/devopscasefront.git
    cd devopscasefront
    ```
 
