@@ -15,9 +15,9 @@ O processo de **Integração Contínua (CI)** e **Entrega Contínua (CD)** é au
    O arquivo `vercel-deploy.yml`, que está localizado na pasta `.github/workflows`, contém a configuração do workflow. A cada push para a `main`, o GitHub Actions executa o seguinte pipeline:
 
    ### Etapas do Workflow:
-   
+
    - **Checkout do Código**: O código mais recente da branch `main` é baixado usando a ação `actions/checkout@v2`. Isso garante que a versão mais atual do código esteja sendo usada para o build.
-   
+
      ```yaml
      - name: Checkout code
        uses: actions/checkout@v2
@@ -106,21 +106,14 @@ O arquivo `docker-compose.yml` define a estrutura de containers para o projeto, 
 version: '3.8'
 
 services:
-  devopscasefront:
-    build:
-      context: .
-    container_name: devopscasefront
+  frontend:
+    build: .
     ports:
-      - '7676:80'
+      - '5173:5173' # Porta que o Vite usa no modo de desenvolvimento
     volumes:
-      - .:/app
-      - /app/node_modules
+      - .:/app # Sincroniza o diretório de código local com o container
     environment:
-      - NGINX_PORT=80
-    networks:
-      - webnet
+      - NODE_ENV=development # Ambiente de desenvolvimento
+    command: npm run dev # Comando para rodar o servidor Vite
 
-networks:
-  webnet:
-    driver: bridge
 ```
